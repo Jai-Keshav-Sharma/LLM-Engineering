@@ -8,139 +8,18 @@
 
 </div>
 
-<style>
-:root {
-  --hf-yellow: #FFD21E;
-  --hf-blue: #00D4FF;
-  --hf-orange: #FF9500;
-  --primary-dark: #1e293b;
-  --primary-light: #f8fafc;
-  --accent-green: #10b981;
-  --accent-purple: #8b5cf6;
-  --border-color: #e2e8f0;
-}
-
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  line-height: 1.6;
-  color: var(--primary-dark);
-}
-
-.hero-section {
-  background: linear-gradient(135deg, var(--hf-yellow), var(--hf-orange));
-  padding: 2rem;
-  border-radius: 16px;
-  margin: 2rem 0;
-  text-align: center;
-  color: white;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
-.lab-card {
-  background: white;
-  border: 2px solid var(--border-color);
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin: 1rem 0;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-}
-
-.lab-card:hover {
-  border-color: var(--hf-blue);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-  transform: translateY(-2px);
-}
-
-.tech-badge {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  margin: 0.25rem;
-  border-radius: 20px;
-  font-size: 0.875rem;
-  font-weight: 600;
-}
-
-.badge-pipeline { background: #fef3c7; color: #92400e; }
-.badge-tokenizer { background: #ddd6fe; color: #6b46c1; }
-.badge-model { background: #d1fae5; color: #065f46; }
-.badge-app { background: #fee2e2; color: #991b1b; }
-
-.highlight-box {
-  background: linear-gradient(90deg, var(--primary-light), #e0f2fe);
-  border-left: 4px solid var(--hf-blue);
-  padding: 1rem 1.5rem;
-  margin: 1rem 0;
-  border-radius: 0 8px 8px 0;
-}
-
-.quick-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin: 2rem 0;
-  justify-content: center;
-}
-
-.nav-button {
-  padding: 0.75rem 1.5rem;
-  background: var(--hf-blue);
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.nav-button:hover {
-  background: var(--accent-purple);
-  transform: translateY(-2px);
-}
-
-.code-block {
-  background: #1e293b;
-  color: #e2e8f0;
-  padding: 1rem;
-  border-radius: 8px;
-  font-family: 'Fira Code', monospace;
-  overflow-x: auto;
-}
-
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-  margin: 2rem 0;
-}
-
-.feature-item {
-  padding: 1rem;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-.feature-item:hover {
-  border-color: var(--hf-yellow);
-  background: #fffbeb;
-}
-</style>
-
-<div class="hero-section">
+<div align="center" style="background: linear-gradient(135deg, #FFD21E, #FF9500); padding: 2rem; border-radius: 16px; margin: 2rem 0; color: white;">
   <h1>🚀 Hugging Face Transformers Mastery</h1>
-  <p>Deep dive into Pipelines, Tokenizers, Models, and Building Production AI Apps</p>
+  <p><strong>Deep dive into Pipelines, Tokenizers, Models, and Building Production AI Apps</strong></p>
 </div>
 
 ## 📋 Table of Contents
 
-<div class="quick-nav">
-  <a href="#-overview" class="nav-button">📖 Overview</a>
-  <a href="#-lab-1-hugging-face-pipelines--api" class="nav-button">🔧 Pipelines</a>
-  <a href="#-lab-2-tokenizers-deep-dive" class="nav-button">✂️ Tokenizers</a>
-  <a href="#-lab-3-hugging-face-models" class="nav-button">🤖 Models</a>
-  <a href="#-lab-4-meeting-minutes-generator" class="nav-button">📝 Final App</a>
-  <a href="#-key-learnings--takeaways" class="nav-button">🎯 Takeaways</a>
+<div align="center">
+  
+| [📖 Overview](#-overview) | [🔧 Pipelines](#-lab-1-hugging-face-pipelines--api) | [✂️ Tokenizers](#-lab-2-tokenizers-deep-dive) | [🤖 Models](#-lab-3-hugging-face-models) | [📝 Final App](#-lab-4-meeting-minutes-generator) | [🎯 Takeaways](#-key-learnings--takeaways) |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+
 </div>
 
 ## 🌟 Overview
@@ -186,13 +65,11 @@ graph TD
 
 ## 🔧 Lab 1: Hugging Face Pipelines & API
 
-<div class="lab-card">
-
-### 📖 **[Open Notebook: 1_HuggingFace_Pipelines_API.ipynb](./1_HuggingFace_Pipelines_API.ipynb)**
-
-<span class="tech-badge badge-pipeline">Transformers</span>
-<span class="tech-badge badge-pipeline">Pipelines</span>
-<span class="tech-badge badge-pipeline">GPU Acceleration</span>
+> ### 📖 **[Open Notebook: 1_HuggingFace_Pipelines_API.ipynb](./1_HuggingFace_Pipelines_API.ipynb)**
+> 
+> ![Transformers](https://img.shields.io/badge/Transformers-Pipeline-yellow?style=flat-square)
+> ![GPU](https://img.shields.io/badge/GPU-Acceleration-blue?style=flat-square)
+> ![Tasks](https://img.shields.io/badge/Tasks-Multiple-green?style=flat-square)
 
 **🎯 Objective:** Master the high-level Pipelines API for rapid prototyping and inference
 
@@ -216,36 +93,18 @@ flowchart LR
 
 #### 🚀 **Key Features Explored:**
 
-<div class="feature-grid">
-  <div class="feature-item">
-    <h4>🎭 Sentiment Analysis</h4>
-    <p>Classify emotions and opinions in text</p>
-  </div>
-  <div class="feature-item">
-    <h4>🏷️ Named Entity Recognition</h4>
-    <p>Extract people, places, organizations</p>
-  </div>
-  <div class="feature-item">
-    <h4>❓ Question Answering</h4>
-    <p>Context-based information retrieval</p>
-  </div>
-  <div class="feature-item">
-    <h4>📝 Text Summarization</h4>
-    <p>Condense long text into key points</p>
-  </div>
-  <div class="feature-item">
-    <h4>🌍 Translation</h4>
-    <p>Multi-language text translation</p>
-  </div>
-  <div class="feature-item">
-    <h4>🎯 Zero-shot Classification</h4>
-    <p>Classify without training examples</p>
-  </div>
-</div>
+| Feature | Description | Use Case |
+|---------|-------------|----------|
+| 🎭 **Sentiment Analysis** | Classify emotions and opinions in text | Social media monitoring |
+| 🏷️ **Named Entity Recognition** | Extract people, places, organizations | Information extraction |
+| ❓ **Question Answering** | Context-based information retrieval | Chatbots, search |
+| 📝 **Text Summarization** | Condense long text into key points | Document processing |
+| 🌍 **Translation** | Multi-language text translation | Localization |
+| 🎯 **Zero-shot Classification** | Classify without training examples | Flexible categorization |
 
 ### 💡 **Code Patterns:**
 
-<div class="code-block">
+```python
 # Simple Pipeline Creation
 classifier = pipeline("sentiment-analysis")
 result = classifier("I'm excited about Hugging Face!")
@@ -256,9 +115,9 @@ generator = pipeline(
     model="microsoft/DialoGPT-medium",
     tokenizer="microsoft/DialoGPT-medium"
 )
-</div>
+```
 
-</div>
+---
 
 ---
 
@@ -436,28 +295,16 @@ flowchart TD
 
 #### 🎯 **Key Features:**
 
-<div class="feature-grid">
-  <div class="feature-item">
-    <h4>🎤 Audio Processing</h4>
-    <p>High-quality speech-to-text with Whisper</p>
-  </div>
-  <div class="feature-item">
-    <h4>📋 Smart Summarization</h4>
-    <p>Extract key points and decisions</p>
-  </div>
-  <div class="feature-item">
-    <h4>✅ Action Items</h4>
-    <p>Identify tasks and assign owners</p>
-  </div>
-  <div class="feature-item">
-    <h4>📝 Markdown Output</h4>
-    <p>Professional, shareable format</p>
-  </div>
-</div>
+| Feature | Description |
+|---------|-------------|
+| 🎤 **Audio Processing** | High-quality speech-to-text with Whisper |
+| 📋 **Smart Summarization** | Extract key points and decisions |
+| ✅ **Action Items** | Identify tasks and assign owners |
+| 📝 **Markdown Output** | Professional, shareable format |
 
 ### 🏗️ **System Prompt Engineering:**
 
-<div class="code-block">
+```python
 system_message = """You are an assistant that produces minutes of meetings 
 from transcripts, with summary, key discussion points, takeaways and action 
 items with owners, in Markdown format."""
@@ -470,39 +317,35 @@ user_message = f"""Below is a transcript. Please write minutes including:
 - Action items with owners
 
 Transcript: {transcription}"""
-</div>
+```
 
 </div>
 
 ---
 
-## 🎯 Key Learnings & Takeaways
+### 🎯 Key Learnings & Takeaways
 
-<div class="highlight-box">
-
-### 🧠 **Technical Mastery Achieved:**
-
-#### 🔧 **Pipeline Proficiency:**
-- ✅ Rapid prototyping with 10+ different pipeline types
-- ✅ GPU acceleration and batch processing
-- ✅ Custom model integration and configuration
-
-#### ✂️ **Tokenization Expertise:**  
-- ✅ Understanding BPE (Byte-Pair Encoding) algorithm
-- ✅ Special token handling and vocabulary management
-- ✅ Token count optimization for cost and performance
-
-#### 🤖 **Model Operation Skills:**
-- ✅ Loading and quantizing large language models
-- ✅ Advanced generation strategies and parameter tuning
-- ✅ Multi-model comparison and selection
-
-#### 📱 **Production Application:**
-- ✅ End-to-end audio processing pipeline
-- ✅ Structured output generation with LLMs
-- ✅ Professional document formatting
-
-</div>
+> ### 🧠 **Technical Mastery Achieved:**
+> 
+> #### 🔧 **Pipeline Proficiency:**
+> - ✅ Rapid prototyping with 10+ different pipeline types
+> - ✅ GPU acceleration and batch processing
+> - ✅ Custom model integration and configuration
+> 
+> #### ✂️ **Tokenization Expertise:**  
+> - ✅ Understanding BPE (Byte-Pair Encoding) algorithm
+> - ✅ Special token handling and vocabulary management
+> - ✅ Token count optimization for cost and performance
+> 
+> #### 🤖 **Model Operation Skills:**
+> - ✅ Loading and quantizing large language models
+> - ✅ Advanced generation strategies and parameter tuning
+> - ✅ Multi-model comparison and selection
+> 
+> #### 📱 **Production Application:**
+> - ✅ End-to-end audio processing pipeline
+> - ✅ Structured output generation with LLMs
+> - ✅ Professional document formatting
 
 ### 🚀 **Next Week Preview:**
 
