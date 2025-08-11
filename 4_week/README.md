@@ -345,31 +345,37 @@ graph TD
 ### System Integration Pattern
 
 ```mermaid
-architecture-beta
-    group api(cloud)[API Layer]
+graph TB
+    subgraph "API Layer"
+        A[OpenAI GPT-4.1]
+        B[HuggingFace Inference]
+    end
     
-    service openai(internet)[OpenAI GPT-4.1] in api
-    service hf(internet)[HuggingFace Inference] in api
+    subgraph "Application Layer"
+        C[Gradio Interface]
+        D[Streaming Engine]
+        E[Evaluation Engine]
+    end
     
-    group app(server)[Application Layer]
+    subgraph "Execution Layer"
+        F[Python Runtime]
+        G[C++ Compiler]
+        H[Benchmark Suite]
+    end
     
-    service gradio(server)[Gradio Interface] in app
-    service stream(server)[Streaming Engine] in app
-    service eval(server)[Evaluation Engine] in app
+    C --> D
+    D --> A
+    D --> B
+    D --> E
+    E --> F
+    E --> G
+    E --> H
     
-    group exec(disk)[Execution Layer]
-    
-    service python(disk)[Python Runtime] in exec
-    service cpp(disk)[C++ Compiler] in exec
-    service bench(disk)[Benchmark Suite] in exec
-    
-    gradio:R -- L:stream
-    stream:T -- B:openai
-    stream:T -- B:hf
-    stream:R -- L:eval
-    eval:B -- T:python
-    eval:B -- T:cpp
-    eval:R -- L:bench
+    style A fill:#e8f5e8
+    style B fill:#fff3e0
+    style C fill:#e1f5fe
+    style D fill:#f3e5f5
+    style E fill:#fce4ec
 ```
 
 ## 📈 Performance Insights
@@ -383,16 +389,34 @@ architecture-beta
 
 ### Model Evaluation Summary
 
+| Metric | GPT-4.1 | Qwen2.5-Coder |
+|--------|---------|---------------|
+| **Code Quality** | 9/10 ⭐⭐⭐⭐⭐ | 7/10 ⭐⭐⭐⭐ |
+| **Complex Logic** | 9/10 ⭐⭐⭐⭐⭐ | 5/10 ⭐⭐⭐ |
+| **Performance** | 8/10 ⭐⭐⭐⭐ | 8/10 ⭐⭐⭐⭐ |
+| **Reliability** | 9/10 ⭐⭐⭐⭐⭐ | 6/10 ⭐⭐⭐ |
+| **Documentation** | 7/10 ⭐⭐⭐⭐ | 5/10 ⭐⭐⭐ |
+| **Speed** | 8/10 ⭐⭐⭐⭐ | 9/10 ⭐⭐⭐⭐⭐ |
+
 ```mermaid
-radar
-    title Model Performance Comparison
-    x-axis 0 : 10
-    "Code Quality" : [9, 7]
-    "Complex Logic" : [9, 5]
-    "Performance" : [8, 8]
-    "Reliability" : [9, 6]
-    "Documentation" : [7, 5]
-    "Speed" : [8, 9]
+graph LR
+    A[Model Comparison] --> B[GPT-4.1]
+    A --> C[Qwen2.5-Coder]
+    
+    B --> D[Excellent Code Quality]
+    B --> E[Complex Logic Handling]
+    B --> F[High Reliability]
+    
+    C --> G[Fast Processing]
+    C --> H[Good Simple Tasks]
+    C --> I[Struggles with Complexity]
+    
+    style B fill:#e8f5e8
+    style C fill:#fff3e0
+    style D fill:#d4edda
+    style E fill:#d4edda
+    style F fill:#d4edda
+    style I fill:#f8d7da
 ```
 
 - **GPT-4.1**: Consistent excellence across all metrics
