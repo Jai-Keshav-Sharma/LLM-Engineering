@@ -13,6 +13,7 @@
   - [Lab 2: Document Chunking & Text Search](#lab-2-document-chunking--text-search)
   - [Lab 3: Vector Embeddings & Visualization](#lab-3-vector-embeddings--visualization)
   - [Lab 4: Expert Knowledge Worker](#lab-4-expert-knowledge-worker)
+  - [Lab 5: RAG Debugging & Optimization](#lab-5-rag-debugging--optimization)
 - [🏗️ Knowledge Base Structure](#-knowledge-base-structure)
 - [🔧 RAG Pipeline Architecture](#-rag-pipeline-architecture)
 - [🎨 Vector Visualization](#-vector-visualization)
@@ -21,7 +22,7 @@
 
 ## 🎯 Week Overview
 
-Week 5 focuses on building **production-ready RAG (Retrieval-Augmented Generation) systems** for enterprise knowledge management. We progress from basic text matching to sophisticated vector-based retrieval systems, culminating in an intelligent knowledge worker for Insurellm, an InsurTech company.
+Week 5 focuses on building **production-ready RAG (Retrieval-Augmented Generation) systems** for enterprise knowledge management. We start from basic text matching and gradually work our way up to sophisticated vector-based retrieval systems. Along the journey, we build an intelligent knowledge worker for Insurellm (an InsurTech company) and then dive deep into debugging when things don't work as expected.
 
 ```mermaid
 flowchart TD
@@ -29,28 +30,34 @@ flowchart TD
     A --> C[Lab 2: Chunking Strategy]
     A --> D[Lab 3: Vector Embeddings]
     A --> E[Lab 4: Production RAG]
+    A --> F[Lab 5: Debugging & Fixes]
     
-    B --> F[Manual Text Matching]
-    B --> G[Direct OpenAI Integration]
-    B --> H[Simple Knowledge Retrieval]
+    B --> G[Manual Text Matching]
+    B --> H[Direct OpenAI Integration]
+    B --> I[Simple Knowledge Retrieval]
     
-    C --> I[Document Loading]
-    C --> J[Text Splitting]
-    C --> K[Metadata Management]
+    C --> J[Document Loading]
+    C --> K[Text Splitting]
+    C --> L[Metadata Management]
     
-    D --> L[OpenAI Embeddings]
-    D --> M[ChromaDB Storage]
-    D --> N[t-SNE Visualization]
+    D --> M[OpenAI Embeddings]
+    D --> N[ChromaDB Storage]
+    D --> O[t-SNE Visualization]
     
-    E --> O[Conversational RAG]
-    E --> P[React Agent]
-    E --> Q[Gradio Interface]
+    E --> P[Conversational RAG]
+    E --> Q[React Agent]
+    E --> R[Gradio Interface]
+    
+    F --> S[LangChain Callbacks]
+    F --> T[RAG Failure Analysis]
+    F --> U[Optimization Strategies]
     
     style A fill:#e1f5fe
     style B fill:#fff3e0
     style C fill:#e8f5e8
     style D fill:#f3e5f5
     style E fill:#fce4ec
+    style F fill:#ffebee
 ```
 
 ## 📊 Learning Architecture
@@ -80,6 +87,11 @@ gantt
     Conversational Chain    :10, 12
     React Agent            :11, 13
     UI Development         :12, 14
+    
+    section Lab 5: Debug & Fix
+    RAG Failure Analysis   :13, 15
+    Callback Investigation :14, 16
+    Performance Tuning     :15, 17
 ```
 
 ## 📚 Lab Breakdown
@@ -285,6 +297,103 @@ graph LR
     style A fill:#e1f5fe
     style B fill:#e8f5e8
 ```
+
+---
+
+### Lab 5: RAG Debugging & Optimization
+**[📓 5_lab.ipynb](5_lab.ipynb)**
+
+Sometimes RAG systems don't work as expected, even when everything looks perfect on paper. This lab explores what happens when our knowledge worker fails to find information we *know* exists in the knowledge base.
+
+#### 🐛 The Problem
+
+Ever had that frustrating moment when you ask your RAG system about something you *know* is in your documents, but it just says "I don't know"? That's exactly what happened here:
+
+**Question**: "Who received the prestigious IIOTY award in 2023?"  
+**RAG Response**: "I don't know"  
+**Reality**: Maxine Thompson's employee record clearly mentions she received the IIOTY 2023 award
+
+#### 🔍 Detective Work with LangChain Callbacks
+
+Instead of just accepting the failure, we dig deeper using LangChain's callback system to see exactly what's happening under the hood:
+
+```mermaid
+flowchart LR
+    A[User Query] --> B[Vector Similarity Search]
+    B --> C[Retrieved Chunks]
+    C --> D[LLM Context]
+    D --> E[Generated Response]
+    
+    F[StdOutCallbackHandler] --> G[Debug Output]
+    G --> H[See Retrieved Chunks]
+    H --> I[Identify Missing Info]
+    
+    B --> F
+    C --> F
+    D --> F
+    
+    style F fill:#ffebee
+    style G fill:#fff3e0
+    style I fill:#e8f5e8
+```
+
+#### 🛠️ Debugging Techniques
+
+| Approach | Tool | What It Reveals |
+|----------|------|----------------|
+| **Callback Inspection** | `StdOutCallbackHandler` | Which chunks were actually retrieved |
+| **Chunk Analysis** | Manual verification | Whether relevant info exists in chunks |
+| **Similarity Testing** | Vector distance checks | Why certain chunks weren't retrieved |
+| **Context Limits** | Token counting | If context window is the bottleneck |
+
+#### 💡 Mitigation Strategies
+
+When RAG fails, here are the strategies we explore:
+
+**1. Adjust Retrieval Parameters**
+```python
+# Increase the number of chunks retrieved
+retriever = vectorstore.as_retriever(search_kwargs={'k': 25})  # Instead of default k=4
+```
+
+**2. Examine Chunking Strategy**
+- Are chunks too small/large?
+- Is overlap sufficient to preserve context?
+- Does the chunk boundary split important information?
+
+**3. Debug with Callbacks**
+```python
+# See exactly what chunks are being used
+conversation_chain = ConversationalRetrievalChain.from_llm(
+    llm=llm, 
+    retriever=retriever, 
+    memory=memory, 
+    callbacks=[StdOutCallbackHandler()]
+)
+```
+
+**4. Consider Alternative Approaches**
+- Semantic chunking instead of character-based
+- Different embedding models
+- Hybrid search (keyword + vector)
+- Query rewriting/expansion
+
+#### 🎯 Real-World Insights
+
+This lab shows that building RAG systems isn't just about the happy path - it's about understanding when and why they fail, then systematically debugging and improving them. Sometimes the issue is:
+
+- **Chunk boundaries** splitting related information
+- **Vector similarity** not capturing the right semantic relationships  
+- **Retrieval parameters** being too restrictive
+- **Query phrasing** not matching document language
+
+#### 🔧 Practical Takeaways
+
+- **Always debug with callbacks** when RAG fails unexpectedly
+- **Test edge cases** beyond the obvious questions
+- **Monitor chunk quality** and retrieval patterns
+- **Iterate on parameters** rather than assuming defaults work best
+- **Remember**: RAG is as much about debugging as it is about building
 
 ## 🏗️ Knowledge Base Structure
 
@@ -510,6 +619,7 @@ mindmap
 - [📓 Lab 2: Document Chunking & Search](2_lab.ipynb)
 - [📓 Lab 3: Vector Embeddings & Visualization](3_lab.ipynb)
 - [📓 Lab 4: Expert Knowledge Worker](4_lab.ipynb)
+- [📓 Lab 5: RAG Debugging & Optimization](5_lab.ipynb)
 - [📁 Knowledge Base](knowledge-base/)
 - [🏠 Repository Home](../README.md)
 - [📊 Previous Week](../4_week/README.md)
