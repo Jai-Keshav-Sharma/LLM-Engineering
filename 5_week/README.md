@@ -13,6 +13,7 @@
   - [Lab 2: Document Chunking & Text Search](#lab-2-document-chunking--text-search)
   - [Lab 3: Vector Embeddings & Visualization](#lab-3-vector-embeddings--visualization)
   - [Lab 4: Expert Knowledge Worker](#lab-4-expert-knowledge-worker)
+  - [Lab 4.5: FAISS vs ChromaDB Comparison](#lab-45-faiss-vs-chromadb-comparison)
   - [Lab 5: RAG Debugging & Optimization](#lab-5-rag-debugging--optimization)
 - [🏗️ Knowledge Base Structure](#-knowledge-base-structure)
 - [🔧 RAG Pipeline Architecture](#-rag-pipeline-architecture)
@@ -30,34 +31,40 @@ flowchart TD
     A --> C[Lab 2: Chunking Strategy]
     A --> D[Lab 3: Vector Embeddings]
     A --> E[Lab 4: Production RAG]
-    A --> F[Lab 5: Debugging & Fixes]
+    A --> F[Lab 4.5: Vector DB Comparison]
+    A --> G[Lab 5: Debugging & Fixes]
     
-    B --> G[Manual Text Matching]
-    B --> H[Direct OpenAI Integration]
-    B --> I[Simple Knowledge Retrieval]
+    B --> H[Manual Text Matching]
+    B --> I[Direct OpenAI Integration]
+    B --> J[Simple Knowledge Retrieval]
     
-    C --> J[Document Loading]
-    C --> K[Text Splitting]
-    C --> L[Metadata Management]
+    C --> K[Document Loading]
+    C --> L[Text Splitting]
+    C --> M[Metadata Management]
     
-    D --> M[OpenAI Embeddings]
-    D --> N[ChromaDB Storage]
-    D --> O[t-SNE Visualization]
+    D --> N[OpenAI Embeddings]
+    D --> O[ChromaDB Storage]
+    D --> P[t-SNE Visualization]
     
-    E --> P[Conversational RAG]
-    E --> Q[React Agent]
-    E --> R[Gradio Interface]
+    E --> Q[Conversational RAG]
+    E --> R[React Agent]
+    E --> S[Gradio Interface]
     
-    F --> S[LangChain Callbacks]
-    F --> T[RAG Failure Analysis]
-    F --> U[Optimization Strategies]
+    F --> T[FAISS Implementation]
+    F --> U[Performance Comparison]
+    F --> V[3D Visualization]
+    
+    G --> W[LangChain Callbacks]
+    G --> X[RAG Failure Analysis]
+    G --> Y[Optimization Strategies]
     
     style A fill:#e1f5fe
     style B fill:#fff3e0
     style C fill:#e8f5e8
     style D fill:#f3e5f5
     style E fill:#fce4ec
-    style F fill:#ffebee
+    style F fill:#e8f5e8
+    style G fill:#ffebee
 ```
 
 ## 📊 Learning Architecture
@@ -88,10 +95,15 @@ gantt
     React Agent            :11, 13
     UI Development         :12, 14
     
+    section Lab 4.5: Vector DB
+    FAISS Implementation   :13, 15
+    Performance Testing    :14, 16
+    3D Visualization      :15, 17
+    
     section Lab 5: Debug & Fix
-    RAG Failure Analysis   :13, 15
-    Callback Investigation :14, 16
-    Performance Tuning     :15, 17
+    RAG Failure Analysis   :16, 18
+    Callback Investigation :17, 19
+    Performance Tuning     :18, 20
 ```
 
 ## 📚 Lab Breakdown
@@ -297,6 +309,143 @@ graph LR
     style A fill:#e1f5fe
     style B fill:#e8f5e8
 ```
+
+---
+
+### Lab 4.5: FAISS vs ChromaDB Comparison  
+**[📓 4.5_lab.ipynb](4.5_lab.ipynb)**
+
+Ever wondered about the differences between vector databases? This lab takes the same RAG system from Lab 4 and rebuilds it using FAISS instead of ChromaDB, allowing us to compare these two popular vector storage solutions side by side.
+
+#### 🔄 The Experiment
+
+We implement the exact same RAG pipeline using FAISS to see how it compares with ChromaDB in terms of:
+- **Setup complexity**
+- **Performance characteristics** 
+- **Visualization capabilities**
+- **Integration with LangChain**
+
+#### 📊 ChromaDB vs FAISS: Detailed Comparison
+
+```mermaid
+graph TB
+    subgraph "ChromaDB Characteristics"
+        A1[Persistent Storage]
+        A2[Built-in Metadata Support]
+        A3[CRUD Operations]
+        A4[Collection Management]
+        A5[Easy LangChain Integration]
+    end
+    
+    subgraph "FAISS Characteristics"
+        B1[In-Memory by Default]
+        B2[Blazing Fast Search]
+        B3[Advanced Index Types]
+        B4[Memory Efficient]
+        B5[Facebook Research Optimized]
+    end
+    
+    subgraph "Common Features"
+        C1[Vector Similarity Search]
+        C2[Embedding Storage]
+        C3[Scalable Architecture]
+        C4[Python APIs]
+    end
+    
+    style A1 fill:#e1f5fe
+    style B1 fill:#fff3e0
+    style C1 fill:#e8f5e8
+```
+
+#### ⚡ Performance & Architecture Comparison
+
+| Aspect | ChromaDB | FAISS | Winner |
+|--------|----------|-------|---------|
+| **Setup Complexity** | Simple, plug-and-play | Requires more configuration | 🟦 ChromaDB |
+| **Search Speed** | Good for most use cases | Extremely fast | 🟨 FAISS |
+| **Memory Usage** | Higher overhead | Memory optimized | 🟨 FAISS |
+| **Persistence** | Built-in disk storage | Manual save/load | 🟦 ChromaDB |
+| **Metadata Handling** | Native support | Requires workarounds | 🟦 ChromaDB |
+| **Scalability** | Good for medium datasets | Excellent for large datasets | 🟨 FAISS |
+| **Index Types** | Standard similarity | Multiple algorithms (IVF, HNSW, etc.) | 🟨 FAISS |
+| **Production Ready** | Yes, with clustering | Yes, battle-tested | 🤝 Tie |
+
+#### 🎨 Visualization Enhancements
+
+One cool feature in this lab is the **3D visualization** of our vector space:
+
+```python
+# 3D t-SNE visualization with FAISS
+tsne = TSNE(n_components=3, random_state=42)
+reduced_vectors = tsne.fit_transform(vectors)
+
+fig = go.Figure(data=[go.Scatter3d(
+    x=reduced_vectors[:, 0],
+    y=reduced_vectors[:, 1], 
+    z=reduced_vectors[:, 2],
+    mode='markers',
+    marker=dict(size=5, color=colors, opacity=0.8)
+)])
+```
+
+This gives us a more immersive view of how our document chunks cluster in the embedding space!
+
+#### 🔧 Implementation Differences
+
+**ChromaDB Approach:**
+```python
+# Simple and straightforward
+vectorstore = Chroma.from_documents(
+    documents=chunks, 
+    embedding=embeddings, 
+    persist_directory=db_name
+)
+```
+
+**FAISS Approach:**
+```python
+# More direct, in-memory focused
+vectorstore = FAISS.from_documents(
+    documents=chunks, 
+    embedding=embeddings
+)
+
+# Access internal structures for analysis
+total_vectors = vectorstore.index.ntotal
+dimensions = vectorstore.index.d
+```
+
+#### 🎯 Key Insights from the Comparison
+
+**When to Choose ChromaDB:**
+- You need persistent storage out of the box
+- Metadata filtering is important for your use case
+- You want simple setup and maintenance
+- Your dataset is small to medium sized (< 1M vectors)
+- You're building a prototype or MVP
+
+**When to Choose FAISS:**
+- You need maximum search performance
+- Working with large datasets (1M+ vectors)
+- Memory efficiency is critical
+- You need specific index types (IVF, HNSW, etc.)
+- You're building high-throughput production systems
+
+**Real-World Usage Patterns:**
+- **Startups/Prototypes**: ChromaDB for rapid development
+- **Large Scale Production**: FAISS for performance-critical applications
+- **Hybrid Approach**: ChromaDB for development, FAISS for production
+- **Enterprise**: Often both, depending on specific use cases
+
+#### 💡 Practical Takeaways
+
+- **Both work great with LangChain** - the choice often comes down to specific requirements
+- **FAISS requires more manual work** for persistence and metadata management
+- **ChromaDB is more beginner-friendly** but FAISS offers more control
+- **Performance differences matter most at scale** - for small datasets, either works fine
+- **Consider your team's expertise** - FAISS has a steeper learning curve
+
+This comparison helps you make informed decisions about vector database choice based on your specific needs rather than just following trends!
 
 ---
 
@@ -619,6 +768,7 @@ mindmap
 - [📓 Lab 2: Document Chunking & Search](2_lab.ipynb)
 - [📓 Lab 3: Vector Embeddings & Visualization](3_lab.ipynb)
 - [📓 Lab 4: Expert Knowledge Worker](4_lab.ipynb)
+- [📓 Lab 4.5: FAISS vs ChromaDB Comparison](4.5_lab.ipynb)
 - [📓 Lab 5: RAG Debugging & Optimization](5_lab.ipynb)
 - [📁 Knowledge Base](knowledge-base/)
 - [🏠 Repository Home](../README.md)
