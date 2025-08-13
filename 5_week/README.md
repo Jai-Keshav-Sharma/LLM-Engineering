@@ -229,54 +229,30 @@ Production-ready RAG system with conversational memory and React agents, designe
 #### 🤖 System Architecture
 
 ```mermaid
-graph TB
-    subgraph "User Interface"
-        A[Gradio Chat Interface]
-        B[Question Input]
-        C[Response Display]
-    end
+flowchart TD
+    A[Gradio Chat Interface] --> B[React Agent]
+    B --> C[Conversation Memory]
+    B --> D[Vector Store Retriever]
+    D --> E[ChromaDB]
+    E --> F[Similarity Search]
     
-    subgraph "Agent Layer"
-        D[React Agent]
-        E[Conversation Memory]
-        F[Tool Selection]
-    end
+    F --> G[Company Info]
+    F --> H[Employee Profiles]
+    F --> I[Product Details]
+    F --> J[Contract Data]
     
-    subgraph "Retrieval System"
-        G[Vector Store Retriever]
-        H[ChromaDB]
-        I[Similarity Search]
-    end
+    B --> K[GPT-4o-mini]
+    K --> L[Response Generation]
+    L --> A
     
-    subgraph "Knowledge Base"
-        J[Company Info]
-        K[Employee Profiles]
-        L[Product Details]
-        M[Contract Data]
-    end
-    
-    subgraph "LLM Layer"
-        N[GPT-4o-mini]
-        O[Response Generation]
-        P[Context Integration]
-    end
-    
-    A --> D
-    D --> E
-    D --> G
-    G --> H
-    H --> I
-    I --> J
-    I --> K
-    I --> L
-    I --> M
-    D --> N
-    N --> A
+    M[User Query] --> A
+    A --> N[Response Display]
     
     style A fill:#e1f5fe
-    style D fill:#fff3e0
-    style G fill:#e8f5e8
-    style N fill:#f3e5f5
+    style B fill:#fff3e0
+    style D fill:#e8f5e8
+    style K fill:#f3e5f5
+    style E fill:#e8f5e8
 ```
 
 #### 🔧 Implementation Details
