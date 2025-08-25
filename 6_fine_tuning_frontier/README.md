@@ -20,6 +20,7 @@ Welcome to our fine-tuning adventure! Together, we'll explore how to build a mac
 Our journey follows a systematic approach from raw data to production-ready models:
 
 ```mermaid
+%%{init: {'theme':'dark'}}%%
 graph TD
     A[🗂️ Raw Amazon Dataset] --> B[🧹 Data Curation]
     B --> C[📊 Feature Engineering]
@@ -30,14 +31,14 @@ graph TD
     F --> G[🎯 Fine-Tuning]
     G --> H[🏆 Final Comparison]
     
-    style A fill:#e1f5fe
-    style B fill:#f3e5f5
-    style C fill:#e8f5e8
-    style D fill:#fff3e0
-    style E fill:#fce4ec
-    style F fill:#f1f8e9
-    style G fill:#e3f2fd
-    style H fill:#fff8e1
+    style A fill:#2d5a87,stroke:#87ceeb,color:#fff
+    style B fill:#8b2635,stroke:#ff6b6b,color:#fff
+    style C fill:#2d5a87,stroke:#87ceeb,color:#fff
+    style D fill:#875a2d,stroke:#ebce87,color:#fff
+    style E fill:#8b2635,stroke:#ff6b6b,color:#fff
+    style F fill:#5a2d87,stroke:#ce87eb,color:#fff
+    style G fill:#2d5a87,stroke:#87ceeb,color:#fff
+    style H fill:#875a2d,stroke:#ebce87,color:#fff
 ```
 
 ---
@@ -47,6 +48,7 @@ graph TD
 ### Data Pipeline Architecture
 
 ```mermaid
+%%{init: {'theme':'dark'}}%%
 graph LR
     subgraph "Data Sources"
         A1[Amazon Reviews 2023]
@@ -80,15 +82,16 @@ graph LR
     C2 --> D1
     C3 --> D1
     
-    style A1 fill:#e8f5e8
-    style B2 fill:#e3f2fd
-    style C2 fill:#fce4ec
-    style D1 fill:#fff3e0
+    style A1 fill:#2d5a87,stroke:#87ceeb,color:#fff
+    style B2 fill:#5a2d87,stroke:#ce87eb,color:#fff
+    style C2 fill:#8b2635,stroke:#ff6b6b,color:#fff
+    style D1 fill:#875a2d,stroke:#ebce87,color:#fff
 ```
 
 ### Model Comparison Framework
 
 ```mermaid
+%%{init: {'theme':'dark'}}%%
 graph TD
     A[Input: Product Description] --> B{Model Type}
     
@@ -114,10 +117,10 @@ graph TD
     
     F --> G[📊 MAE Comparison]
     
-    style C fill:#fff3e0
-    style D fill:#fce4ec
-    style E fill:#e3f2fd
-    style F fill:#f1f8e9
+    style C fill:#875a2d,stroke:#ebce87,color:#fff
+    style D fill:#8b2635,stroke:#ff6b6b,color:#fff
+    style E fill:#5a2d87,stroke:#ce87eb,color:#fff
+    style F fill:#2d5a87,stroke:#87ceeb,color:#fff
 ```
 
 ---
@@ -182,6 +185,7 @@ graph TD
 ### 💾 Processed Datasets
 
 ```mermaid
+%%{init: {'theme':'dark'}}%%
 graph LR
     A[Raw Data] --> B[Processing Pipeline]
     B --> C[train.pkl]
@@ -194,10 +198,10 @@ graph LR
     E --> I[Lightweight Training]
     F --> J[Lightweight Testing]
     
-    style A fill:#e8f5e8
-    style B fill:#e3f2fd
-    style G fill:#fff3e0
-    style H fill:#fce4ec
+    style A fill:#2d5a87,stroke:#87ceeb,color:#fff
+    style B fill:#5a2d87,stroke:#ce87eb,color:#fff
+    style G fill:#875a2d,stroke:#ebce87,color:#fff
+    style H fill:#8b2635,stroke:#ff6b6b,color:#fff
 ```
 
 ---
@@ -264,6 +268,7 @@ print(f"Lite test samples: {len(test_lite):,}")
 ### 🔄 Dataset Usage Workflow
 
 ```mermaid
+%%{init: {'theme':'dark'}}%%
 graph TD
     A[🚀 Quick Prototyping] --> B[Load lite-data]
     C[🏋️ Full Training] --> D[Load Amazon-Reviews-Price_Prediction_Corpus]
@@ -274,10 +279,10 @@ graph TD
     E --> G[Scale to Full Dataset]
     G --> F
     
-    style A fill:#e3f2fd
-    style C fill:#fff3e0
-    style E fill:#e8f5e8
-    style F fill:#fce4ec
+    style A fill:#5a2d87,stroke:#ce87eb,color:#fff
+    style C fill:#875a2d,stroke:#ebce87,color:#fff
+    style E fill:#2d5a87,stroke:#87ceeb,color:#fff
+    style F fill:#8b2635,stroke:#ff6b6b,color:#fff
 ```
 
 ### 📋 Dataset Integration Guide
@@ -341,6 +346,7 @@ graph TD
 ### 📊 Performance Visualization
 
 ```mermaid
+%%{init: {'theme':'dark'}}%%
 graph LR
     A[Traditional ML] --> A1[$97 MAE]
     B[Zero-Shot GPT-4o] --> B1[$17-$73 MAE]
@@ -352,11 +358,11 @@ graph LR
     C1 --> E
     D1 --> E
     
-    style A fill:#fff3e0
-    style B fill:#e8f5e8
-    style C fill:#e3f2fd
-    style D fill:#fce4ec
-    style E fill:#f1f8e9
+    style A fill:#875a2d,stroke:#ebce87,color:#fff
+    style B fill:#2d5a87,stroke:#87ceeb,color:#fff
+    style C fill:#5a2d87,stroke:#ce87eb,color:#fff
+    style D fill:#8b2635,stroke:#ff6b6b,color:#fff
+    style E fill:#2d5a87,stroke:#87ceeb,color:#fff
 ```
 
 ---
@@ -388,6 +394,7 @@ graph LR
 ### 🔄 Workflow Execution
 
 ```mermaid
+%%{init: {'theme':'dark'}}%%
 graph TD
     A[Start Here] --> B[Run Lab 1: Data Discovery]
     B --> C[Run Lab 2: Data Engineering]
@@ -396,8 +403,8 @@ graph TD
     E --> F[Run Lab 5: Fine-Tuning]
     F --> G[Analyze Results]
     
-    style A fill:#e8f5e8
-    style G fill:#fff8e1
+    style A fill:#2d5a87,stroke:#87ceeb,color:#fff
+    style G fill:#875a2d,stroke:#ebce87,color:#fff
 ```
 
 ### 📋 Quick Start Checklist
