@@ -270,7 +270,7 @@ graph TD
     E --> E2[LLM Integration]
     E --> E3[Response Generation]
     
-    B --> F[🏢 Knowledge Base<br/>Company | Contracts | Employees | Products]
+    B --> F[🏢 Knowledge Base<br/>Company • Contracts • Employees • Products]
     C --> G[📊 Vector Visualization]
     D --> H[🎯 Expert Knowledge Worker]
     
